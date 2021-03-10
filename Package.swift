@@ -8,8 +8,15 @@ let package = Package(
     targets: [
         .target(
             name: "AlfredKat",
-            dependencies: ["AlfredKatCore"]),
+            dependencies: ["AlfredKatCore"]
+        ),
         .target(
-            name: "AlfredKatCore")
+            name: "AlfredKatCore",
+            dependencies: []
+        ),
+        .testTarget(
+            name: "AlfredKatCoreTests",
+            dependencies: ["AlfredKatCore"]
+        ),
     ]
 )
