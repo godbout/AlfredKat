@@ -6,7 +6,12 @@ import PackageDescription
 let package = Package(
     name: "AlfredKat",
     dependencies: [
-        .package(path: "~/Development/AlfredWorkflowScriptFilter")
+        .package(path: "~/Development/AlfredWorkflowScriptFilter"),
+        .package(
+            name: "SwiftSoup",
+            url: "https://github.com/scinfu/SwiftSoup",
+            from: "2.3.2"
+        )
     ],
     targets: [
         .target(
@@ -15,7 +20,7 @@ let package = Package(
         ),
         .target(
             name: "AlfredKatCore",
-            dependencies: ["AlfredWorkflowScriptFilter"]
+            dependencies: ["AlfredWorkflowScriptFilter", "SwiftSoup"]
         ),
         .testTarget(
             name: "AlfredKatCoreTests",
