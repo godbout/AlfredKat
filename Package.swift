@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "AlfredKat",
+    dependencies: [
+        .package(path: "~/Development/AlfredWorkflowScriptFilter")
+    ],
     targets: [
         .target(
             name: "AlfredKat",
@@ -12,7 +15,7 @@ let package = Package(
         ),
         .target(
             name: "AlfredKatCore",
-            dependencies: []
+            dependencies: ["AlfredWorkflowScriptFilter"]
         ),
         .testTarget(
             name: "AlfredKatCoreTests",
