@@ -1,7 +1,8 @@
 import AlfredWorkflowScriptFilter
-import SwiftSoup
 import Foundation
+import SwiftSoup
 
+// TODO: should be a singleton
 class Entrance {
     static func userQuery() -> String {
         CommandLine.arguments[1]
