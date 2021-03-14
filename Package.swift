@@ -6,7 +6,11 @@ import PackageDescription
 let package = Package(
     name: "AlfredKat",
     dependencies: [
-        .package(path: "~/Development/AlfredWorkflowScriptFilter"),
+        .package(
+            name: "AlfredWorkflowScriptFilter",
+            url: "https://github.com/godbout/AlfredWorkflowScriptFilter",
+            .branch("open-up")
+        ),
         .package(
             name: "SwiftSoup",
             url: "https://github.com/scinfu/SwiftSoup",
