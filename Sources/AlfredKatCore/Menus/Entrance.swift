@@ -9,7 +9,7 @@ class Entrance {
     }
 
     static func scriptFilter() throws -> String {
-        try torrentResults(for: Workflow.userQuery())
+        try torrentResults(for: userQuery())
     }
 
     static func torrentResults(for query: String) throws -> String {
@@ -57,7 +57,7 @@ class Entrance {
             }
         } else {
             ScriptFilter.add(
-                Item(title: "404 for \(Workflow.userQuery()) ☹️")
+                Item(title: "404 for \(userQuery()) ☹️")
                     .subtitle("Try some other terms maybe?")
             )
         }
