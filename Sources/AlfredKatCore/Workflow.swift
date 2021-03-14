@@ -23,6 +23,15 @@ public enum Workflow {
             for torrent in torrents {
                 ScriptFilter.add(
                     Item(title: try torrent.text())
+                        .subtitle(try torrent.text())
+                        .arg("do")
+                        .variable(Variable(name: "action", value: "download"))
+                        .mod(
+                            Cmd()
+                                .arg("do")
+                                .subtitle("Copy magnet link")
+                                .variable(Variable(name: "action", value: "copy"))
+                        )
                 )
             }
         } else {
