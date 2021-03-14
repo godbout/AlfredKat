@@ -3,6 +3,10 @@ import Foundation
 import SwiftSoup
 
 public enum Workflow {
+    static func userQuery() -> String {
+        CommandLine.arguments[1]
+    }
+    
     public static func next() -> String {
         ProcessInfo.processInfo.environment["next"] ?? "oops"
     }

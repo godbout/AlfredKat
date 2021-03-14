@@ -4,12 +4,8 @@ import SwiftSoup
 
 // TODO: should be a singleton
 class Entrance {
-    static func userQuery() -> String {
-        CommandLine.arguments[1]
-    }
-
     static func scriptFilter() throws -> String {
-        try torrentResults(for: userQuery())
+        try torrentResults(for: Workflow.userQuery())
     }
 
     static func torrentResults(for query: String) throws -> String {
@@ -57,7 +53,7 @@ class Entrance {
             }
         } else {
             ScriptFilter.add(
-                Item(title: "404 for \(userQuery()) ☹️")
+                Item(title: "404 for \(Workflow.userQuery()) ☹️")
                     .subtitle("Try some other terms maybe?")
             )
         }
