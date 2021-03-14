@@ -1,5 +1,6 @@
 import SwiftSoup
 
+// TODO: should be a proper singleton. wtf is that thing?
 public class TorrentMenuItemBuilder {
     let shared = TorrentMenuItemBuilder()
 
@@ -12,5 +13,4 @@ public class TorrentMenuItemBuilder {
     static func subtitle(for row: Element) throws -> String {
         try row.text()
     }
-
 }

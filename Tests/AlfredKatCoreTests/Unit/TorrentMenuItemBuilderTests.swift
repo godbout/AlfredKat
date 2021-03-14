@@ -34,5 +34,4 @@ extension TorrentMenuItemBuilderTests {
             try TorrentMenuItemBuilder.subtitle(for: row!).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
         )
     }
-
 }
