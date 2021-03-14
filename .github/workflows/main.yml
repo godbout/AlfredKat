@@ -15,6 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install dependencies
+      run: swift package update
     - name: build
       run: swift build -v
     - name: run tests with code coverage
