@@ -1,0 +1,30 @@
+name: tests and coverage
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  swift:
+    name: on Catalina
+    runs-on: macos-10.15
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build
+      run: swift build -v
+    - name: run tests with code coverage
+      run: swift test -v --enable-code-coverage
+    - name: convert coverage to lcov format
+      run: xcrun llvm-cov export -format="lcov" .build/debug/${SWIFT_PACKAGE_LIBRARY}PackageTests.xctest/Contents/MacOS/${SWIFT_PACKAGE_LIBRARY}PackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
+      env:
+        SWIFT_PACKAGE_LIBRARY: AlfredKat
+    - name: upload coverage to codecov
+      run: bash <(curl https://codecov.io/bash)
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
