@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AlfredWorkflowScriptFilter",
+        "repositoryURL": "https://github.com/godbout/AlfredWorkflowScriptFilter",
+        "state": {
+          "branch": "open-up",
+          "revision": "f622a983446935dac69a076b315156e9ad155447",
+          "version": null
+        }
+      },
+      {
         "package": "SwiftSoup",
         "repositoryURL": "https://github.com/scinfu/SwiftSoup",
         "state": {

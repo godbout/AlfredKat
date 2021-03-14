@@ -8,9 +8,9 @@ let package = Package(
     dependencies: [
         .package(
             name: "AlfredWorkflowScriptFilter",
-            path: "~/Development/AlfredWorkflowScriptFilter"
-//            url: "https://github.com/godbout/AlfredWorkflowScriptFilter",
-//            .branch("open-up")
+//            path: "~/Development/AlfredWorkflowScriptFilter"
+            url: "https://github.com/godbout/AlfredWorkflowScriptFilter",
+            .branch("open-up")
         ),
         .package(
             name: "SwiftSoup",
