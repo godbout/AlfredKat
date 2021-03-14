@@ -12,7 +12,8 @@ public enum Workflow {
     }
 
     static func torrentResults(for query: String) throws -> String {
-        let urlString = "https://kickasstorrents.to/usearch/" + (query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+        let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
+        let urlString = urlBase + "/search/" + (query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
 
         guard let url = URL(string: urlString) else { exit(1) }
         let html = try String(contentsOf: url)
@@ -21,9 +22,12 @@ public enum Workflow {
 
         if let torrents = torrents {
             for torrent in torrents {
+                let title = try torrent.text()
+                let subtitle = try torrent.text()
+
                 ScriptFilter.add(
-                    Item(title: try torrent.text())
-                        .subtitle(try torrent.text())
+                    Item(title: title)
+                        .subtitle(subtitle)
                         .arg("do")
                         .variable(Variable(name: "action", value: "download"))
                         .mod(
