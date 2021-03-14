@@ -4,6 +4,10 @@ import SwiftSoup
 
 // TODO: should be a singleton
 class Entrance {
+    static func userQuery() -> String {
+        CommandLine.arguments[1]
+    }
+
     static func scriptFilter() throws -> String {
         try torrentResults(for: Workflow.userQuery())
     }
