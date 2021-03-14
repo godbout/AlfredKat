@@ -2,12 +2,12 @@
 import XCTest
 
 class WorkflowTests: XCTestCase {
-    func spoofUserQueryWith(_ query: String) {
+    func spoofUserQuery(with query: String) {
         CommandLine.arguments[1] = query
     }
 
     func test_that_it_can_search_for_torrents_on_the_KAT_site() {
-        spoofUserQueryWith("fight club")
+        spoofUserQuery(with: "fight club")
 
         XCTAssertTrue(
             try Workflow.menu().contains("Fight Club (1999)")
@@ -15,7 +15,7 @@ class WorkflowTests: XCTestCase {
     }
 
     func test_that_it_tells_the_user_that_there_is_no_item_found_if_well_there_is_no_item_found() {
-        spoofUserQueryWith("lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")
+        spoofUserQuery(with: "lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")
 
         XCTAssertTrue(
             try Workflow.menu().contains("404")
