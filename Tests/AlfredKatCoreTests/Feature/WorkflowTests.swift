@@ -2,12 +2,8 @@
 import XCTest
 
 class WorkflowTests: XCTestCase {
-    func spoofUserQuery(with query: String) {
-        CommandLine.arguments[1] = query
-    }
-
     func test_that_it_can_search_for_torrents_on_the_KAT_site() {
-        spoofUserQuery(with: "fight club")
+        super.spoofUserQuery(with: "fight club")
 
         XCTAssertTrue(
             try Workflow.menu().contains("Fight Club (1999)")
@@ -22,9 +18,17 @@ class WorkflowTests: XCTestCase {
         )
     }
 
-    func test_that_calling_a_workflow_action_that_does_not_exist_returns_false() {
-        Process().environment = ["action": "LOOOOOLLLLLL"]
+//    func test_that_calling_a_workflow_action_that_does_not_exist_returns_false() {
+//        Process().environment = ["action": "LOOOOOLLLLLL"]
+//
+//        XCTAssertFalse(Workflow.do())
+//    }
 
-        XCTAssertFalse(Workflow.do())
-    }
+//    func test_that_it_can_get_the_torrent_page_link() {
+//        spoofUserQuery(with: "fight club")
+//
+//        XCTAssertTrue(
+//            try Workflow.menu().contains("/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+//        )
+//    }
 }
