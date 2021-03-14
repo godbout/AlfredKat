@@ -3,7 +3,7 @@ import XCTest
 
 class WorkflowTests: XCTestCase {
     func test_that_it_can_search_for_torrents_on_the_KAT_site() {
-        super.spoofUserQuery(with: "fight club")
+        spoofUserQuery(with: "fight club")
 
         XCTAssertTrue(
             try Workflow.menu().contains("Fight Club (1999)")
