@@ -5,13 +5,15 @@ import XCTest
 @testable import AlfredKatCore
 
 class TorrentMenuItemBuilderTests: XCTestCase {
-    var row: Element?
+    static var row: Element?
 
-    override func setUp() {
+    override class func setUp() {
+        super.setUp()
+
         // TODO: absolutely refactor this disgusting shit below
         let query = "ponyo"
 
-        spoofUserQuery(with: query)
+        XCTestCase().spoofUserQuery(with: query)
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
         let urlString = urlBase + "/search/" + (query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
 
@@ -31,7 +33,7 @@ extension TorrentMenuItemBuilderTests {
 
     func test_that_it_can_build_the_item_subtitle() throws {
         XCTAssertTrue(
-            try TorrentMenuItemBuilder.subtitle(for: row!).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
+            try TorrentMenuItemBuilder.subtitle(for: TorrentMenuItemBuilderTests.row!).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
         )
     }
 }
