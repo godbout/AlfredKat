@@ -7,8 +7,8 @@ public enum Workflow {
         ProcessInfo.processInfo.environment["next"] ?? "oops"
     }
 
-    public static func menu() throws -> String {
-        try Entrance.scriptFilter()
+    public static func menu() -> String {
+        Entrance.scriptFilter()
     }
 
     public static func `do`() -> Bool {

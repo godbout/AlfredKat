@@ -6,7 +6,7 @@ class WorkflowTests: XCTestCase {
         spoofUserQuery(with: "fight club")
 
         XCTAssertTrue(
-            try Workflow.menu().contains("Fight Club (1999)")
+            Workflow.menu().contains("Fight Club (1999)")
         )
     }
 
@@ -14,7 +14,7 @@ class WorkflowTests: XCTestCase {
         spoofUserQuery(with: "lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")
 
         XCTAssertTrue(
-            try Workflow.menu().contains("404")
+            Workflow.menu().contains("404")
         )
     }
 
