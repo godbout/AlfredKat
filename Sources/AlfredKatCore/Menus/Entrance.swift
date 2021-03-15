@@ -8,24 +8,28 @@ class Entrance {
         CommandLine.arguments[1]
     }
 
-    static func scriptFilter() throws -> String {
-        try torrentResults(for: userQuery())
+    static func scriptFilter() -> String {
+        results(for: userQuery())
     }
 
-    static func torrentResults(for query: String) throws -> String {
-        let torrents = searchOnline(for: query)
-
-        return menuFor(torrents: torrents)
+    static func results(for query: String) -> String {
+        do {
+            let torrents = try searchOnline(for: query)
+            
+            return menuFor(torrents: torrents)
+        } catch {
+            return ScriptFilter.add(Item(title: "can't grab the torrents online for whatever reason")).output()
+        }
     }
 
-    private static func searchOnline(for query: String) -> Elements? {
+    static func searchOnline(for query: String) throws -> Elements? {
         let urlString = buildURL(from: query)
 
         // TODO: handle errors properly
         guard let url = URL(string: urlString) else { return nil }
-        let html = try! String(contentsOf: url)
-        let document = try! SwiftSoup.parse(html)
-        let torrents = try! document.select(".frontPageWidget tr").first()?.siblingElements()
+        let html = try String(contentsOf: url)
+        let document = try SwiftSoup.parse(html)
+        let torrents = try document.select(".frontPageWidget tr").first()?.siblingElements()
 
         return torrents
     }
@@ -39,8 +43,8 @@ class Entrance {
     private static func menuFor(torrents: Elements?) -> String {
         if let torrents = torrents {
             for torrent in torrents {
-                let title = try! TorrentMenuItemBuilder.title(for: torrent)
-                let subtitle = try! TorrentMenuItemBuilder.subtitle(for: torrent)
+                let title = TorrentMenuItemBuilder.title(for: torrent)
+                let subtitle = TorrentMenuItemBuilder.subtitle(for: torrent)
 
                 ScriptFilter.add(
                     Item(title: title)

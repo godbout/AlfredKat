@@ -1,4 +1,4 @@
-import AlfredKatCore
+@testable import AlfredKatCore
 import SwiftSoup
 import XCTest
 
@@ -14,13 +14,8 @@ class TorrentMenuItemBuilderTests: XCTestCase {
         let query = "ponyo"
 
         XCTestCase().spoofUserQuery(with: query)
-        let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
-        let urlString = urlBase + "/search/" + (query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
-
-        guard let url = URL(string: urlString) else { exit(1) }
-        let html = try! String(contentsOf: url)
-        let document = try! SwiftSoup.parse(html)
-        row = try! document.select(".frontPageWidget tr").first()?.siblingElements().first()
+        
+        row = try? Entrance.searchOnline(for: query)?.first
     }
 }
 
@@ -32,8 +27,12 @@ extension TorrentMenuItemBuilderTests {
 //    }
 
     func test_that_it_can_build_the_item_subtitle() throws {
-        XCTAssertTrue(
-            try TorrentMenuItemBuilder.subtitle(for: TorrentMenuItemBuilderTests.row!).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
-        )
+        if let row = TorrentMenuItemBuilderTests.row {
+            XCTAssertTrue(
+                TorrentMenuItemBuilder.subtitle(for: row).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
+            )
+        } else {
+            XCTFail("issue with grabbing torrents from online")
+        }
     }
 }
