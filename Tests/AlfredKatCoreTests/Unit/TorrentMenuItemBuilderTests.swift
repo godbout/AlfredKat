@@ -10,7 +10,6 @@ class TorrentMenuItemBuilderTests: XCTestCase {
     override class func setUp() {
         super.setUp()
 
-        // TODO: absolutely refactor this disgusting shit below
         let query = "ponyo"
 
         XCTestCase().spoofUserQuery(with: query)
@@ -28,9 +27,7 @@ extension TorrentMenuItemBuilderTests {
 
     func test_that_it_can_build_the_item_subtitle() throws {
         if let row = TorrentMenuItemBuilderTests.row {
-            XCTAssertTrue(
-                TorrentMenuItemBuilder.subtitle(for: row).contains("Ponyo (2008) BluRay 1080p YTS YIFY")
-            )
+            XCTAssertEqual(TorrentMenuItemBuilder.subtitle(for: row), "Ponyo (2008) BluRay 1080p YTS YIFY")
         } else {
             XCTFail("issue with grabbing torrents from online")
         }
