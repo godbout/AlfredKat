@@ -12,7 +12,7 @@ class TorrentMenuItemBuilderTests: XCTestCase {
 
         let query = "ponyo"
 
-        XCTestCase().spoofUserQuery(with: query)
+        Self.spoofUserQuery(with: query)
 
         row = try? Entrance.searchOnline(for: query)?.first
     }
