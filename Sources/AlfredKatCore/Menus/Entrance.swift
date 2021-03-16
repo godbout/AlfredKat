@@ -2,8 +2,11 @@ import AlfredWorkflowScriptFilter
 import Foundation
 import SwiftSoup
 
-// TODO: should be a singleton
 class Entrance {
+    static let shared = Entrance()
+
+    private init() {}
+
     static func userQuery() -> String {
         CommandLine.arguments[1]
     }
@@ -34,7 +37,6 @@ class Entrance {
         var document: Document
         var torrents: Elements?
 
-        // TODO: handle errors properly
         guard let url = URL(string: urlString) else { return nil }
 
         do {
