@@ -18,6 +18,14 @@ class WorkflowTests: XCTestCase {
         )
     }
 
+    func test_that_it_can_get_the_torrent_page_link() {
+        spoofUserQuery(with: "fight club")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+        )
+    }
+
 //    func test_that_calling_a_workflow_action_that_does_not_exist_returns_false() {
 //        Process().environment = ["action": "LOOOOOLLLLLL"]
 //
