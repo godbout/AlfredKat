@@ -1,8 +1,7 @@
 import SwiftSoup
 
-// TODO: should be a proper singleton. wtf is that thing?
 public class TorrentMenuItemBuilder {
-    let shared = TorrentMenuItemBuilder()
+    static let shared = TorrentMenuItemBuilder()
 
     private init() {}
 
