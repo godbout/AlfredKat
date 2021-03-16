@@ -19,16 +19,24 @@ public enum Workflow {
     }
 
     public static func `do`() -> Bool {
-        false
+        let action = ProcessInfo.processInfo.environment["action"] ?? ""
+
+        switch action {
+        default:
+            return false
+        }
     }
 
-    public static func notify(resultFrom result: Bool = false) -> String {
+    public static func notify(resultFrom _: Bool = false) -> String {
         let action = ProcessInfo.processInfo.environment["action"] ?? "huh"
 
-        if result == false {
-            return "oops... cannot \(action)."
+        switch action {
+        case "download":
+            return "notify download"
+        case "copy":
+            return "notify copy"
+        default:
+            return "huh. what did you do?!"
         }
-
-        return "\(action) is done!"
     }
 }
