@@ -15,21 +15,45 @@ class Entrance {
     static func results(for query: String) -> String {
         do {
             let torrents = try searchOnline(for: query)
-            
+
             return menuFor(torrents: torrents)
+        } catch WorkflowError.badURL {
+            return ScriptFilter.add(Item(title: "can't reach the URL. bad naughty one? 👠️👠️👠️ or blocked? ❌️❌️❌️").subtitle("also check your Internet connection 🙄️")).output()
+        } catch WorkflowError.badHTML {
+            return ScriptFilter.add(Item(title: "the page HTML is rotten. how the fuck did this happen? ⁉️")).output()
+        } catch WorkflowError.badCSSSelector {
+            return ScriptFilter.add(Item(title: "can't find the torrents on the site, sorry ah 😑️")).output()
         } catch {
-            return ScriptFilter.add(Item(title: "can't grab the torrents online for whatever reason")).output()
+            return ScriptFilter.add(Item(title: "you've reached the end of why the Workflow doesn't work. i don't seem to know 👀️")).output()
         }
     }
 
     static func searchOnline(for query: String) throws -> Elements? {
         let urlString = buildURL(from: query)
+        var html = ""
+        var document: Document
+        var torrents: Elements?
 
         // TODO: handle errors properly
         guard let url = URL(string: urlString) else { return nil }
-        let html = try String(contentsOf: url)
-        let document = try SwiftSoup.parse(html)
-        let torrents = try document.select(".frontPageWidget tr").first()?.siblingElements()
+
+        do {
+            html = try String(contentsOf: url)
+        } catch {
+            throw WorkflowError.badURL
+        }
+
+        do {
+            document = try SwiftSoup.parse(html)
+        } catch {
+            throw WorkflowError.badHTML
+        }
+
+        do {
+            torrents = try document.select(".frontPageWidget tr").first()?.siblingElements()
+        } catch {
+            throw WorkflowError.badCSSSelector
+        }
 
         return torrents
     }

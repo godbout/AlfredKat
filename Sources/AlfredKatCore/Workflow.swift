@@ -2,6 +2,13 @@ import AlfredWorkflowScriptFilter
 import Foundation
 import SwiftSoup
 
+enum WorkflowError: Error {
+    case noNetwork
+    case badURL
+    case badHTML
+    case badCSSSelector
+}
+
 public enum Workflow {
     public static func next() -> String {
         ProcessInfo.processInfo.environment["next"] ?? "oops"
