@@ -79,12 +79,15 @@ class Entrance {
             for torrent in torrents {
                 let title = TorrentMenuItemBuilder.title(for: torrent)
                 let subtitle = TorrentMenuItemBuilder.subtitle(for: torrent)
+                let torrentPageLink = TorrentMenuItemBuilder.pageLink(for: torrent)
 
                 ScriptFilter.add(
                     Item(title: title)
                         .subtitle(subtitle)
                         .arg("do")
                         .variable(Variable(name: "action", value: "download"))
+                        .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
+
                         .mod(
                             Cmd()
                                 .arg("do")
