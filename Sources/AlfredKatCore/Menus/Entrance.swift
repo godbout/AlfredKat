@@ -62,8 +62,16 @@ class Entrance {
 
     private static func buildURL(from query: String) -> String {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
+        let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
 
-        return urlBase + "/search/" + (query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+        if encodedQuery.contains("%23") {
+            let term = encodedQuery.components(separatedBy: "%23")[0]
+            let tag = encodedQuery.components(separatedBy: "%23")[1]
+
+            return urlBase + "/search/" + term + "/category/" + tag
+        }
+
+        return urlBase + "/search/" + encodedQuery
     }
 
     private static func menuFor(torrents: Elements?) -> String {

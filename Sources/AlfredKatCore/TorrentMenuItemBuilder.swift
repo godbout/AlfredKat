@@ -13,7 +13,6 @@ public class TorrentMenuItemBuilder {
             let seeders = try row.child(4).text()
             let leechers = try row.child(5).text()
 
-
             return "\(when) by \(uploader), \(size), \(seeders) seeders (\(leechers) l)"
 
         } catch {
