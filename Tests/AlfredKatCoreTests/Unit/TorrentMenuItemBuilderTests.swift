@@ -33,7 +33,15 @@ extension TorrentMenuItemBuilderTests {
         if let row = TorrentMenuItemBuilderTests.row {
             XCTAssertEqual(TorrentMenuItemBuilder.subtitle(for: row), "Ponyo (2008) BluRay 1080p YTS YIFY")
         } else {
-            XCTFail("issue with grabbing torrents from online")
+            XCTFail("can't generate the subtitle out of the torrents")
+        }
+    }
+
+    func test_that_it_can_build_the_page_link() throws {
+        if let row = TorrentMenuItemBuilderTests.row {
+            XCTAssertEqual(TorrentMenuItemBuilder.pageLink(for: row), "/ponyo-2008-bluray-1080p-yts-yify-t3657848.html")
+        } else {
+            XCTFail("can't get the fucking torrent link out of the torrents")
         }
     }
 }
