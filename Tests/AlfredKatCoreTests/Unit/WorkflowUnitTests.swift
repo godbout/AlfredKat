@@ -1,13 +1,13 @@
 @testable import AlfredKatCore
 import XCTest
 
-class UnitWorkflowTests: XCTestCase {
+class WorkflowUnitTests: XCTestCase {
     override class func setUp() {
         Self.setEnvironmentVariable(name: "action", value: "LOOOOOLLLLLL")
     }
 }
 
-extension UnitWorkflowTests {
+extension WorkflowUnitTests {
     func test_that_calling_a_workflow_action_that_does_not_exist_returns_false() {
         XCTAssertFalse(
             Workflow.do()
