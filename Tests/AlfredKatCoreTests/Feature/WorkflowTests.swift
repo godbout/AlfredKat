@@ -10,6 +10,18 @@ class WorkflowTests: XCTestCase {
         )
     }
 
+    func test_that_it_can_filter_torrents_by_music_type() {
+        Self.spoofUserQuery(with: "blonde redhead #music")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Blonde Redhead 2007 23")
+        )
+
+        XCTAssertFalse(
+            Workflow.menu().contains("Porno")
+        )
+    }
+
     func test_that_it_tells_the_user_that_there_is_no_item_found_if_well_there_is_no_item_found() {
         Self.spoofUserQuery(with: "lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")
 
