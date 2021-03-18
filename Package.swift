@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "AlfredKat",
+    platforms: [.macOS(.v10_13)],
     dependencies: [
         .package(
             name: "AlfredWorkflowScriptFilter",
