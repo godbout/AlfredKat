@@ -37,4 +37,13 @@ class WorkflowTests: XCTestCase {
             Workflow.menu().contains("/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
         )
     }
+
+    func test_that_it_can_download_a_chosen_torrent_through_the_default_application() {
+        Self.setEnvironmentVariable(name: "action", value: "download")
+        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+
+        XCTAssertTrue(
+            Workflow.do()
+        )
+    }
 }
