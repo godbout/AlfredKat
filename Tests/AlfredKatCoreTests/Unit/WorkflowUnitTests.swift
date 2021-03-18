@@ -3,6 +3,8 @@ import XCTest
 
 class WorkflowUnitTests: XCTestCase {
     override class func setUp() {
+        super.setUp()
+        
         Self.setEnvironmentVariable(name: "action", value: "LOOOOOLLLLLL")
     }
 }
