@@ -2,6 +2,12 @@
 import XCTest
 
 class WorkflowTests: XCTestCase {
+    override func tearDown() {
+        Self.setEnvironmentVariable(name: "cli", value: "")
+    }
+}
+
+extension WorkflowTests {
     func test_that_it_can_search_for_torrents_on_the_KAT_site() {
         Self.spoofUserQuery(with: "fight club")
 
@@ -41,6 +47,17 @@ class WorkflowTests: XCTestCase {
     func test_that_it_can_download_a_chosen_torrent_through_the_default_application() {
         Self.setEnvironmentVariable(name: "action", value: "download")
         Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+
+        XCTAssertTrue(
+            Workflow.do()
+        )
+    }
+
+    func test_that_it_can_download_a_chosen_torrent_through_a_cli_command() {
+        Self.setEnvironmentVariable(name: "action", value: "download")
+        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+
+        Self.setEnvironmentVariable(name: "cli", value: "/usr/bin/open -R {magnet}")
 
         XCTAssertTrue(
             Workflow.do()

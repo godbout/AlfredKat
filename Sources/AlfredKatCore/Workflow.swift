@@ -32,30 +32,50 @@ public enum Workflow {
 
     private static func download(using torrentPageLink: String) -> Bool {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
-        var html = ""
-        var document: Document
         var magnetLink: String
 
         guard let url = URL(string: urlBase + torrentPageLink) else { return false }
 
         do {
-            html = try String(contentsOf: url)
-        } catch {
-            return false
-        }
-
-        do {
-            document = try SwiftSoup.parse(html)
-        } catch {
-            return false
-        }
-
-        do {
+            let html = try String(contentsOf: url)
+            let document = try SwiftSoup.parse(html)
             magnetLink = try document.select("#tab-technical a.siteButton.giantButton").attr("href")
         } catch {
             return false
         }
 
+        if (ProcessInfo.processInfo.environment["cli"] ?? "") != "" {
+            return useCLIToDownload(torrent: magnetLink)
+        }
+
+        return useDefaultApplicationToDownload(torrent: magnetLink)
+    }
+
+    private static func useCLIToDownload(torrent magnetLink: String) -> Bool {
+        let fullDummyCommand = ProcessInfo.processInfo.environment["cli"] ?? ""
+        let fullRealCommand = fullDummyCommand.replacingOccurrences(of: "{magnet}", with: magnetLink)
+
+        var splitCommand = fullRealCommand.split(separator: " ").map{ String($0) }
+
+        guard splitCommand.count != 0 else { return false }
+        
+        let toolItself = splitCommand.removeFirst()
+
+        let task = Process()
+
+        task.executableURL = URL(fileURLWithPath: String(toolItself))
+        task.arguments = splitCommand
+
+        do {
+            try task.run()
+        } catch {
+            return false
+        }
+
+        return true
+    }
+
+    private static func useDefaultApplicationToDownload(torrent magnetLink: String) -> Bool {
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/bin/open")
         task.arguments = [magnetLink]
