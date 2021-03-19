@@ -63,4 +63,13 @@ extension WorkflowTests {
             Workflow.do()
         )
     }
+    
+    func test_that_it_can_copy_the_magnet_link_of_a_chosen_torrent() {
+        Self.setEnvironmentVariable(name: "action", value: "copy")
+        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+        
+        XCTAssertTrue(
+            Workflow.do()
+        )
+    }
 }
