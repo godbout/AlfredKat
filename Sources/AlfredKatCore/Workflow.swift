@@ -55,16 +55,16 @@ public enum Workflow {
         let fullDummyCommand = ProcessInfo.processInfo.environment["cli"] ?? ""
         let fullRealCommand = fullDummyCommand.replacingOccurrences(of: "{magnet}", with: magnetLink)
 
-        var splitCommand = fullRealCommand.split(separator: " ").map{ String($0) }
+        var arguments = fullRealCommand.split(separator: " ").map{ String($0) }
 
-        guard splitCommand.count != 0 else { return false }
+        guard arguments.count != 0 else { return false }
         
-        let toolItself = splitCommand.removeFirst()
+        let tool = arguments.removeFirst()
 
         let task = Process()
 
-        task.executableURL = URL(fileURLWithPath: String(toolItself))
-        task.arguments = splitCommand
+        task.executableURL = URL(fileURLWithPath: String(tool))
+        task.arguments = arguments
 
         do {
             try task.run()
