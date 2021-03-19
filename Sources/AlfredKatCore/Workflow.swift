@@ -25,30 +25,41 @@ public enum Workflow {
         switch action {
         case "download":
             return download(using: torrentPageLink)
+        case "copy":
+            return copy(using: torrentPageLink)
         default:
             return false
         }
     }
 
     private static func download(using torrentPageLink: String) -> Bool {
+        guard let magnetLink = findMagnetLink(on: torrentPageLink) else {
+            return false
+        }
+        
+        if (ProcessInfo.processInfo.environment["cli"] ?? "") != "" {
+            return useCLIToDownload(torrent: magnetLink)
+        }
+        
+        return useDefaultApplicationToDownload(torrent: magnetLink)
+    }
+    
+    private static func findMagnetLink(on torrentPageLink: String) -> String? {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
+        
+        guard let url = URL(string: urlBase + torrentPageLink) else { return nil }
+
         var magnetLink: String
-
-        guard let url = URL(string: urlBase + torrentPageLink) else { return false }
-
+        
         do {
             let html = try String(contentsOf: url)
             let document = try SwiftSoup.parse(html)
             magnetLink = try document.select("#tab-technical a.siteButton.giantButton").attr("href")
         } catch {
-            return false
+            return nil
         }
-
-        if (ProcessInfo.processInfo.environment["cli"] ?? "") != "" {
-            return useCLIToDownload(torrent: magnetLink)
-        }
-
-        return useDefaultApplicationToDownload(torrent: magnetLink)
+        
+        return magnetLink
     }
 
     private static func useCLIToDownload(torrent magnetLink: String) -> Bool {
@@ -82,6 +93,33 @@ public enum Workflow {
 
         do {
             try task.run()
+        } catch {
+            return false
+        }
+
+        return true
+    }
+    
+    private static func copy(using torrentPageLink: String) -> Bool {
+        guard let magnetLink = findMagnetLink(on: torrentPageLink) else {
+            return false
+        }
+
+        let pipe = Pipe()
+        
+        let echo = Process()
+        echo.executableURL = URL(fileURLWithPath: "/bin/echo")
+        echo.arguments = [magnetLink]
+        echo.standardOutput = pipe
+
+
+        let pbcopy = Process()
+        pbcopy.executableURL = URL(fileURLWithPath: "/usr/bin/pbcopy")
+        pbcopy.standardInput = pipe
+
+        do {
+            try echo.run()
+            try pbcopy.run()
         } catch {
             return false
         }

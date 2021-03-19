@@ -92,6 +92,7 @@ class Entrance {
                                 .arg("do")
                                 .subtitle("Copy magnet link")
                                 .variable(Variable(name: "action", value: "copy"))
+                                .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
                         )
                 )
             }
