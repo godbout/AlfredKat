@@ -88,6 +88,9 @@ class Entrance {
                         .variable(Variable(name: "action", value: "download"))
                         .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
                         .variable(Variable(name: "torrent_name", value: subtitle))
+                        .icon(
+                            Icon(path: "Resources/magnet.png")
+                        )
                         .mod(
                             Cmd()
                                 .arg("do")
