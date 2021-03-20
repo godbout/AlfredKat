@@ -87,12 +87,14 @@ class Entrance {
                         .arg("do")
                         .variable(Variable(name: "action", value: "download"))
                         .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
+                        .variable(Variable(name: "torrent_name", value: subtitle))
                         .mod(
                             Cmd()
                                 .arg("do")
                                 .subtitle("Copy magnet link")
                                 .variable(Variable(name: "action", value: "copy"))
                                 .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
+                                .variable(Variable(name: "torrent_name", value: subtitle))
                         )
                 )
             }

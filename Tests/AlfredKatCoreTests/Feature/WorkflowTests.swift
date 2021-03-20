@@ -63,13 +63,45 @@ extension WorkflowTests {
             Workflow.do()
         )
     }
-    
+
     func test_that_it_can_copy_the_magnet_link_of_a_chosen_torrent() {
         Self.setEnvironmentVariable(name: "action", value: "copy")
         Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
-        
+
         XCTAssertTrue(
             Workflow.do()
+        )
+    }
+
+    func test_that_it_can_notify_the_user_when_download() {
+        Self.setEnvironmentVariable(name: "action", value: "download")
+        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
+
+        XCTAssertTrue(
+            Workflow.notify().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
+        )
+    }
+
+    func test_that_it_can_notify_the_user_when_copy() {
+        Self.setEnvironmentVariable(name: "action", value: "download")
+        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
+
+        XCTAssertTrue(
+            Workflow.notify().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
+        )
+    }
+
+    func test_that_the_user_receives_the_correct_notification_according_to_its_action() {
+        Self.setEnvironmentVariable(name: "torrent_name", value: "torrent_name=Fight Club (1999) 1080p BrRip x264 - YIFY")
+
+        Self.setEnvironmentVariable(name: "action", value: "download")
+        XCTAssertTrue(
+            Workflow.notify().contains("will soon be at home")
+        )
+
+        Self.setEnvironmentVariable(name: "action", value: "copy")
+        XCTAssertTrue(
+            Workflow.notify().contains("has been copied to clipboard")
         )
     }
 }
