@@ -5,8 +5,8 @@
         "package": "AlfredWorkflowScriptFilter",
         "repositoryURL": "https://github.com/godbout/AlfredWorkflowScriptFilter",
         "state": {
-          "branch": "open-up",
-          "revision": "53b2cf242450eb4f8177289975c9b2893eab9401",
+          "branch": "master",
+          "revision": "b3aa04607d6e8621aa55fa94038ec3671e8fa9a3",
           "version": null
         }
       },

@@ -11,7 +11,7 @@ let package = Package(
             name: "AlfredWorkflowScriptFilter",
 //            path: "~/Development/AlfredWorkflowScriptFilter"
             url: "https://github.com/godbout/AlfredWorkflowScriptFilter",
-            .branch("open-up")
+            .branch("master")
         ),
         .package(
             name: "SwiftSoup",
