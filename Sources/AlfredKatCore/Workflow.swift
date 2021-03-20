@@ -36,21 +36,21 @@ public enum Workflow {
         guard let magnetLink = findMagnetLink(on: torrentPageLink) else {
             return false
         }
-        
+
         if (ProcessInfo.processInfo.environment["cli"] ?? "") != "" {
             return useCLIToDownload(torrent: magnetLink)
         }
-        
+
         return useDefaultApplicationToDownload(torrent: magnetLink)
     }
-    
+
     private static func findMagnetLink(on torrentPageLink: String) -> String? {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
-        
+
         guard let url = URL(string: urlBase + torrentPageLink) else { return nil }
 
         var magnetLink: String
-        
+
         do {
             let html = try String(contentsOf: url)
             let document = try SwiftSoup.parse(html)
@@ -58,7 +58,7 @@ public enum Workflow {
         } catch {
             return nil
         }
-        
+
         return magnetLink
     }
 
@@ -66,10 +66,10 @@ public enum Workflow {
         let fullDummyCommand = ProcessInfo.processInfo.environment["cli"] ?? ""
         let fullRealCommand = fullDummyCommand.replacingOccurrences(of: "{magnet}", with: magnetLink)
 
-        var arguments = fullRealCommand.split(separator: " ").map{ String($0) }
+        var arguments = fullRealCommand.split(separator: " ").map { String($0) }
 
         guard arguments.count != 0 else { return false }
-        
+
         let tool = arguments.removeFirst()
 
         let task = Process()
@@ -99,19 +99,18 @@ public enum Workflow {
 
         return true
     }
-    
+
     private static func copy(using torrentPageLink: String) -> Bool {
         guard let magnetLink = findMagnetLink(on: torrentPageLink) else {
             return false
         }
 
         let pipe = Pipe()
-        
+
         let echo = Process()
         echo.executableURL = URL(fileURLWithPath: "/bin/echo")
         echo.arguments = [magnetLink]
         echo.standardOutput = pipe
-
 
         let pbcopy = Process()
         pbcopy.executableURL = URL(fileURLWithPath: "/usr/bin/pbcopy")
@@ -128,15 +127,29 @@ public enum Workflow {
     }
 
     public static func notify(resultFrom _: Bool = false) -> String {
-        let action = ProcessInfo.processInfo.environment["action"] ?? "huh"
+        let action = ProcessInfo.processInfo.environment["action"]
+        let torrentName = ProcessInfo.processInfo.environment["torrent_name"] ?? "some porn"
 
         switch action {
         case "download":
-            return "notify download"
+            return notificationOfDownload(for: torrentName)
         case "copy":
-            return "notify copy"
+            return notificationOfCopy(for: torrentName)
         default:
-            return "huh. what did you do?!"
+            return "huh. wtf?"
         }
+    }
+
+    private static func notificationOfDownload(for torrentName: String) -> String {
+        "\(torrentName) will soon be at home!"
+    }
+
+    private static func notificationOfCopy(for torrentName: String) -> String {
+        let lowerBound = torrentName.index(torrentName.startIndex, offsetBy: 0)
+        let higherBound = torrentName.index(torrentName.startIndex, offsetBy: 30)
+
+        let name = torrentName[lowerBound ... higherBound]
+
+        return "Magnet link for \(name)... has been copied to clipboard!"
     }
 }
