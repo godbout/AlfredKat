@@ -19,7 +19,7 @@ public enum Workflow {
     }
 
     public static func `do`() -> Bool {
-        let action = ProcessInfo.processInfo.environment["action"] ?? ""
+        let action = ProcessInfo.processInfo.environment["action"]
         let torrentPageLink = ProcessInfo.processInfo.environment["torrent_page_link"] ?? ""
 
         switch action {
