@@ -1,6 +1,6 @@
 # AlfredKat
 
-usage is the same as the PHP version: [alfred-kat](https://github.com/godbout/alfred-kat). go check there for now.
+usage is the same as the PHP version: [alfred-kat](https://github.com/godbout/alfred-kat). go check there for now it's beautiful.
 
 ---
 
