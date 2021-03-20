@@ -2,12 +2,6 @@
 import XCTest
 
 class WorkflowTests: XCTestCase {
-    override func tearDown() {
-        Self.setEnvironmentVariable(name: "cli", value: "")
-    }
-}
-
-extension WorkflowTests {
     func test_that_it_can_search_for_torrents_on_the_KAT_site() {
         Self.spoofUserQuery(with: "fight club")
 
