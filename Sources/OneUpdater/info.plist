@@ -128,7 +128,7 @@
 				<integer>0</integer>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist=''
+readonly remote_info_plist='https://raw.githubusercontent.com/godbout/AlfredKat/master/Resources/info.plist'
 readonly workflow_url='godbout/AlfredKat'
 readonly download_type='github_release'
 readonly frequency_check='0'
