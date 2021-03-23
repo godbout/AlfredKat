@@ -40,7 +40,7 @@ Totally. But Apple is getting rid of interpreters in macOS. that means to use th
 
 PHP version is still available here: https://github.com/godbout/alfred-kat. It will be missed. Source code was beautiful. (The last comment might be due to delusion of grandeur.)
 
-# YOU LOST ALL YOUR DOWNLOADS COUNT LMAO
+# BUT YOU LOST ALL YOUR DOWNLOADS COUNT LMAO
 
 WHO GIVES A SHIT.
 
