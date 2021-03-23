@@ -36,7 +36,7 @@ You can also copy the magnet to the clipboard rather than opening it (and starti
 
 # HUH WASNT THIS WRITTEN IN PHP B4?
 
-Totally. But Apple is getting rid of interpreters in macOS. That means that to use this Workflow I would have to ask you to install PHP. and probably some specific version. and probably in some specific place. That Sucks™. So it's now written in Swift.
+Totally. But Apple is getting rid of interpreters in macOS. That means that to use this Workflow I would have to ask you to install PHP. And probably some specific version. And probably in some specific place. That Sucks™. So it's now written in Swift.
 
 PHP version is still available here: https://github.com/godbout/alfred-kat. It will be missed. Source code was beautiful. (The last comment might be due to delusion of grandeur.)
 
