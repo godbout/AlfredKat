@@ -1,4 +1,5 @@
 import AlfredWorkflowScriptFilter
+import AlfredWorkflowUpdater
 import Foundation
 import SwiftSoup
 
@@ -16,6 +17,25 @@ class Entrance {
     }
 
     static func results(for query: String) -> String {
+        if let release = Updater.checkUpdate(for: "godbout/AlfredKat") {
+            ScriptFilter.add(
+                Item(title: "version \(release.version) available")
+                    .subtitle("enter to update, cmd+enter to go to release page")
+                    .arg("do")
+                    .variable(Variable(name: "action", value: "update"))
+                    .variable(Variable(name: "workflow_file_url", value: release.file))
+                    .mod(
+                        Cmd()
+                            .subtitle("go to release page")
+                            .arg("do")
+                            .variables(
+                                Variable(name: "action", value: "go_release_page"),
+                                Variable(name: "release_page_url", value: release.page)
+                            )
+                    )
+            )
+        }
+
         do {
             let torrents = try searchOnline(for: query)
 

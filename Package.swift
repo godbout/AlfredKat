@@ -17,6 +17,10 @@ let package = Package(
             url: "https://github.com/scinfu/SwiftSoup",
             from: "2.3.2"
         ),
+        .package(
+            name: "AlfredWorkflowUpdater",
+            path: "~/Development/AlfredWorkflowUpdater"
+        ),
     ],
     targets: [
         .target(
@@ -25,7 +29,7 @@ let package = Package(
         ),
         .target(
             name: "AlfredKatCore",
-            dependencies: ["AlfredWorkflowScriptFilter", "SwiftSoup"]
+            dependencies: ["AlfredWorkflowScriptFilter", "SwiftSoup", "AlfredWorkflowUpdater"]
         ),
         .testTarget(
             name: "AlfredKatCoreTests",
