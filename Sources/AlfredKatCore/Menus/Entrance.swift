@@ -19,14 +19,14 @@ class Entrance {
     static func results(for query: String) -> String {
         if let release = Updater.checkUpdate(for: "godbout/AlfredKat") {
             ScriptFilter.add(
-                Item(title: "Alfred Kat update available! (\(release.version))")
-                    .subtitle("Press Enter to update, or Command Enter to take a trip to the release page")
+                Item(title: "update available! (\(release.version))")
+                    .subtitle("press Enter to update, or Command Enter to take a trip to the release page")
                     .arg("do")
                     .variable(Variable(name: "action", value: "update"))
                     .variable(Variable(name: "workflow_file_url", value: release.file))
                     .mod(
                         Cmd()
-                            .subtitle("Hello release page")
+                            .subtitle("say hello to the release page")
                             .arg("do")
                             .variables(
                                 Variable(name: "action", value: "go_release_page"),
@@ -114,7 +114,7 @@ class Entrance {
                         .mod(
                             Cmd()
                                 .arg("do")
-                                .subtitle("Copy magnet link")
+                                .subtitle("copy magnet link")
                                 .variable(Variable(name: "action", value: "copy"))
                                 .variable(Variable(name: "torrent_page_link", value: torrentPageLink))
                                 .variable(Variable(name: "torrent_name", value: subtitle))
@@ -124,7 +124,7 @@ class Entrance {
         } else {
             ScriptFilter.add(
                 Item(title: "404 for \(userQuery()) ☹️")
-                    .subtitle("Try some other terms maybe?")
+                    .subtitle("try some other terms maybe?")
             )
         }
 
