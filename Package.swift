@@ -19,7 +19,8 @@ let package = Package(
         ),
         .package(
             name: "AlfredWorkflowUpdater",
-            path: "~/Development/AlfredWorkflowUpdater"
+            url: "https://github.com/godbout/AlfredWorkflowUpdater",
+            from: "0.1.0"
         ),
     ],
     targets: [
