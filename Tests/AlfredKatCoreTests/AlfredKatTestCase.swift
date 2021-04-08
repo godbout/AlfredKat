@@ -27,4 +27,12 @@ extension AlfredKatTestCase {
     static func resetUserQuery() {
         CommandLine.arguments[1] = ""
     }
+
+    static func mockLocalWorkflowFolder() {
+        var folder = URL(string: #file)!
+        folder.deleteLastPathComponent()
+
+        Self.setEnvironmentVariable(name: "alfred_preferences", value: folder.path + "/Resources")
+        Self.setEnvironmentVariable(name: "alfred_workflow_uid", value: "AlfredKat")
+    }
 }
