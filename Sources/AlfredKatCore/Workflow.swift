@@ -148,6 +148,8 @@ public enum Workflow {
             return notificationOfCopy(for: torrentName)
         case "update":
             return ""
+        case "go_release_page":
+            return ""
         default:
             return "huh. wtf?"
         }

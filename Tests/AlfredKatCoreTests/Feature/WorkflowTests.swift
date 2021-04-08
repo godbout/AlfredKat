@@ -66,36 +66,4 @@ class WorkflowTests: AlfredKatTestCase {
             Workflow.do()
         )
     }
-
-    func test_that_it_can_notify_the_user_when_download() {
-        Self.setEnvironmentVariable(name: "action", value: "download")
-        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
-
-        XCTAssertTrue(
-            Workflow.notify().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
-        )
-    }
-
-    func test_that_it_can_notify_the_user_when_copy() {
-        Self.setEnvironmentVariable(name: "action", value: "download")
-        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
-
-        XCTAssertTrue(
-            Workflow.notify().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
-        )
-    }
-
-    func test_that_the_user_receives_the_correct_notification_according_to_its_action() {
-        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
-
-        Self.setEnvironmentVariable(name: "action", value: "download")
-        XCTAssertTrue(
-            Workflow.notify().contains("will soon be at home")
-        )
-
-        Self.setEnvironmentVariable(name: "action", value: "copy")
-        XCTAssertTrue(
-            Workflow.notify().contains("has been copied to clipboard")
-        )
-    }
 }
