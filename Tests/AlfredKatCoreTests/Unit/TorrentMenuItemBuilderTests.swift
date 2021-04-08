@@ -2,9 +2,7 @@
 import SwiftSoup
 import XCTest
 
-@testable import AlfredKatCore
-
-class TorrentMenuItemBuilderTests: XCTestCase {
+class TorrentMenuItemBuilderTests: AlfredKatTestCase {
     static var row: Element?
 
     override class func setUp() {
