@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "AlfredWorkflowUpdater",
+        "repositoryURL": "https://github.com/godbout/AlfredWorkflowUpdater",
+        "state": {
+          "branch": null,
+          "revision": "960f94e49b0eb9c3ca9ea81c5d2162073f47b73f",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "SwiftSoup",
         "repositoryURL": "https://github.com/scinfu/SwiftSoup",
         "state": {
