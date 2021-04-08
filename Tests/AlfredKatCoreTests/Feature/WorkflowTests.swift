@@ -40,7 +40,10 @@ class WorkflowTests: AlfredKatTestCase {
 
     func test_that_it_can_download_a_chosen_torrent_through_the_default_application() {
         Self.setEnvironmentVariable(name: "action", value: "download")
-        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+        Self.setEnvironmentVariable(
+            name: "torrent_page_link",
+            value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html"
+        )
 
         XCTAssertTrue(
             Workflow.do()
@@ -49,7 +52,10 @@ class WorkflowTests: AlfredKatTestCase {
 
     func test_that_it_can_download_a_chosen_torrent_through_a_cli_command() {
         Self.setEnvironmentVariable(name: "action", value: "download")
-        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+        Self.setEnvironmentVariable(
+            name: "torrent_page_link",
+            value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html"
+        )
 
         Self.setEnvironmentVariable(name: "cli", value: "/usr/bin/open -R {magnet}")
 
@@ -60,7 +66,10 @@ class WorkflowTests: AlfredKatTestCase {
 
     func test_that_it_can_copy_the_magnet_link_of_a_chosen_torrent() {
         Self.setEnvironmentVariable(name: "action", value: "copy")
-        Self.setEnvironmentVariable(name: "torrent_page_link", value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html")
+        Self.setEnvironmentVariable(
+            name: "torrent_page_link",
+            value: "/fight-club-1999-1080p-brrip-x264-yify-t446902.html"
+        )
 
         XCTAssertTrue(
             Workflow.do()
