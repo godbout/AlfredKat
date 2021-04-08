@@ -26,7 +26,7 @@ class Entrance {
                     .variable(Variable(name: "workflow_file_url", value: release.file))
                     .mod(
                         Cmd()
-                            .subtitle("go to release page")
+                            .subtitle("Hello release page")
                             .arg("do")
                             .variables(
                                 Variable(name: "action", value: "go_release_page"),
