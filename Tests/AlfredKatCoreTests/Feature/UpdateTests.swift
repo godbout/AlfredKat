@@ -22,4 +22,16 @@ class UpdateTests: AlfredKatTestCase {
             Workflow.do()
         )
     }
+
+    func test_that_Alfred_Kat_can_send_the_user_to_the_update_release_page() {
+        Self.setEnvironmentVariable(
+            name: "release_page_url",
+            value: "https://github.com/godbout/AlfredKat/releases/latest"
+        )
+        Self.setEnvironmentVariable(name: "action", value: "go_release_page")
+
+        XCTAssertTrue(
+            Workflow.do()
+        )
+    }
 }
