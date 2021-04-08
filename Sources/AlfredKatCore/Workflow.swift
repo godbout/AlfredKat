@@ -146,8 +146,10 @@ public enum Workflow {
             return notificationOfDownload(for: torrentName)
         case "copy":
             return notificationOfCopy(for: torrentName)
-        default:
+        case "update":
             return ""
+        default:
+            return "huh. wtf?"
         }
     }
 
