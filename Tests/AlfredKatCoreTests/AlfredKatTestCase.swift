@@ -1,13 +1,15 @@
 import XCTest
 
-extension XCTestCase {
-    override open func setUp() {
+class AlfredKatTestCase: XCTestCase {
+    override func setUp() {
+        super.setUp()
+
         Self.resetUserQuery()
         Self.resetEnvironmentVariables()
     }
 }
 
-extension XCTestCase {
+extension AlfredKatTestCase {
     static func spoofUserQuery(with query: String) {
         CommandLine.arguments[1] = query
     }

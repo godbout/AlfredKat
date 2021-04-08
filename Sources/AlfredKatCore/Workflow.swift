@@ -30,13 +30,13 @@ public enum Workflow {
             return copy(using: torrentPageLink)
         case "update":
             guard let workflowFileURL = ProcessInfo.processInfo.environment["workflow_file_url"] else { return false }
-            
+
             _ = Updater.notify(title: "Alfred Kat", message: "downloading update...")
 
             return Updater.update(with: workflowFileURL)
         case "go_release_page":
             guard let releasePageURL = ProcessInfo.processInfo.environment["release_page_url"] else { return false }
-            
+
             return Updater.open(page: releasePageURL)
         default:
             return false
