@@ -86,7 +86,7 @@ class WorkflowTests: XCTestCase {
     }
 
     func test_that_the_user_receives_the_correct_notification_according_to_its_action() {
-        Self.setEnvironmentVariable(name: "torrent_name", value: "torrent_name=Fight Club (1999) 1080p BrRip x264 - YIFY")
+        Self.setEnvironmentVariable(name: "torrent_name", value: "Fight Club (1999) 1080p BrRip x264 - YIFY")
 
         Self.setEnvironmentVariable(name: "action", value: "download")
         XCTAssertTrue(
