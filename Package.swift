@@ -34,7 +34,10 @@ let package = Package(
         ),
         .testTarget(
             name: "AlfredKatCoreTests",
-            dependencies: ["AlfredKatCore"]
+            dependencies: ["AlfredKatCore"],
+            resources: [
+                .process("Resources"),
+            ]
         ),
     ]
 )
