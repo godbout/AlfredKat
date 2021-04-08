@@ -19,8 +19,8 @@ class Entrance {
     static func results(for query: String) -> String {
         if let release = Updater.checkUpdate(for: "godbout/AlfredKat") {
             ScriptFilter.add(
-                Item(title: "version \(release.version) available")
-                    .subtitle("enter to update, cmd+enter to go to release page")
+                Item(title: "Alfred Kat update available! (\(release.version))")
+                    .subtitle("Press Enter to update, or Command Enter to take a trip to the release page")
                     .arg("do")
                     .variable(Variable(name: "action", value: "update"))
                     .variable(Variable(name: "workflow_file_url", value: release.file))
