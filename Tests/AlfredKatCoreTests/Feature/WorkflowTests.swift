@@ -31,7 +31,7 @@ class WorkflowTests: AlfredKatTestCase {
     }
 
     func test_that_it_can_get_the_torrent_page_link() {
-        Self.spoofUserQuery(with: "fight club")
+        Self.spoofUserQuery(with: "fight club YIFY")
 
         XCTAssertTrue(
             Workflow.menu().contains("/fight-club-1999-1080p-brrip-x264-yify-t446902.html")

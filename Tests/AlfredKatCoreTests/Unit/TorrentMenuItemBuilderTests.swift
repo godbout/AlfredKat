@@ -8,7 +8,7 @@ class TorrentMenuItemBuilderTests: AlfredKatTestCase {
     override class func setUp() {
         super.setUp()
 
-        let query = "ponyo"
+        let query = "ponyo YIFY"
 
         Self.spoofUserQuery(with: query)
 
