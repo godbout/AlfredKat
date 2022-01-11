@@ -21,6 +21,18 @@ class WorkflowTests: AlfredKatTestCase {
             Workflow.menu().contains("Porno")
         )
     }
+    
+    func test_that_it_can_sort_torrents_by_seeders() {
+        Self.spoofUserQuery(with: "fight club ^seeders")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
+        )
+
+        XCTAssertFalse(
+            Workflow.menu().contains("dAV1ncia")
+        )
+    }
 
     func test_that_it_tells_the_user_that_there_is_no_item_found_if_well_there_is_no_item_found() {
         Self.spoofUserQuery(with: "lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")

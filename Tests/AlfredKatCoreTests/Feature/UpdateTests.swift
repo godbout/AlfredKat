@@ -3,7 +3,7 @@ import XCTest
 
 class UpdateTests: AlfredKatTestCase {
     func test_that_Alfred_Kat_can_detect_an_available_self_update() {
-        Self.spoofUserQuery(with: "fight club")
+        Self.spoofUserQuery(with: "fight club YIFI")
         Self.mockLocalWorkflowFolder()
 
         XCTAssertTrue(

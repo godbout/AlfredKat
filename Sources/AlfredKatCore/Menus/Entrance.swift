@@ -84,11 +84,20 @@ class Entrance {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
         let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
 
+        // #
         if encodedQuery.contains("%23") {
             let term = encodedQuery.components(separatedBy: "%23")[0]
             let tag = encodedQuery.components(separatedBy: "%23")[1]
 
             return urlBase + "/search/" + term + "/category/" + tag
+        }
+            
+        // ^
+        if encodedQuery.contains("%5E") {
+            let term = encodedQuery.components(separatedBy: "%5E")[0]
+            let sortType = encodedQuery.components(separatedBy: "%5E")[1]
+
+            return urlBase + "/search/" + term + "/?sortby=" + sortType + "&sort=desc"
         }
 
         return urlBase + "/search/" + encodedQuery
