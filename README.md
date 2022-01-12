@@ -16,6 +16,8 @@ Get your KAT torrents without all the advertising crap. Type "kat" followed by w
 
 Now you can also use #tags.
 
+Now you can also sort ^seeders.
+
 # MANDATORY SCREENSHOT
 
 ![Beautiful Video](https://github.com/godbout/AlfredKat/blob/media/AlfredKat.gif "Beautiful Video")
