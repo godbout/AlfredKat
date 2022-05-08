@@ -11,6 +11,21 @@ enum WorkflowError: Error {
 }
 
 public enum Workflow {
+    public static func setURLCache() {
+        if let alfredWorkflowCache = ProcessInfo.processInfo.environment["alfred_workflow_cache"] {
+            try? FileManager.default.createDirectory(atPath: alfredWorkflowCache, withIntermediateDirectories: false)
+            // URLCache diskPath is deprecated, but Apple doesn't seem to have a replacement yet.
+            // if using directory, we can't get a URL working with "Workflow Data" because of the space. we can
+            // get a functioning URL with fileURLWithPath but once we pass it to URLCache, it will create a
+            // "Workflow%20Data" folder. same with using the new FilePath. currently it doesn't seem there's
+            // a replacement, hence using diskPath until it's fully removed by Apple, which will surely have provided
+            // a solution by then.
+            URLCache.shared = URLCache(memoryCapacity: 1_000_000, diskCapacity: 10_000_000, diskPath: alfredWorkflowCache)
+        } else {
+            URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, directory: nil)
+        }
+    }
+    
     public static func next() -> String {
         ProcessInfo.processInfo.environment["next"] ?? "oops"
     }
