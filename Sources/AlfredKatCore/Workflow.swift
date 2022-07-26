@@ -1,7 +1,7 @@
 import AlfredWorkflowScriptFilter
-import AlfredWorkflowUpdater
 import Foundation
 import SwiftSoup
+
 
 enum WorkflowError: Error {
     case noNetwork
@@ -10,7 +10,9 @@ enum WorkflowError: Error {
     case badCSSSelector
 }
 
+
 public enum Workflow {
+    
     public static func setURLCache() {
         if let alfredWorkflowCache = ProcessInfo.processInfo.environment["alfred_workflow_cache"] {
             try? FileManager.default.createDirectory(atPath: alfredWorkflowCache, withIntermediateDirectories: false)
@@ -48,6 +50,29 @@ public enum Workflow {
         }
     }
 
+    public static func notify(resultFrom _: Bool = false) -> String {
+        let action = ProcessInfo.processInfo.environment["action"]
+        let torrentName = ProcessInfo.processInfo.environment["torrent_name"] ?? "some porn"
+
+        switch action {
+        case "download":
+            return notificationOfDownload(for: torrentName)
+        case "copy":
+            return notificationOfCopy(for: torrentName)
+        case "update":
+            return ""
+        case "go_release_page":
+            return ""
+        default:
+            return "huh. wtf?"
+        }
+    }
+
+}
+
+
+extension Workflow {
+    
     private static func download(using torrentPageLink: String) -> Bool {
         guard let magnetLink = findMagnetLink(on: torrentPageLink) else {
             return false
@@ -140,26 +165,9 @@ public enum Workflow {
         }
 
         return true
+    
     }
-
-    public static func notify(resultFrom _: Bool = false) -> String {
-        let action = ProcessInfo.processInfo.environment["action"]
-        let torrentName = ProcessInfo.processInfo.environment["torrent_name"] ?? "some porn"
-
-        switch action {
-        case "download":
-            return notificationOfDownload(for: torrentName)
-        case "copy":
-            return notificationOfCopy(for: torrentName)
-        case "update":
-            return ""
-        case "go_release_page":
-            return ""
-        default:
-            return "huh. wtf?"
-        }
-    }
-
+    
     private static func notificationOfDownload(for torrentName: String) -> String {
         "\(torrentName) will soon be at home!"
     }
@@ -172,4 +180,5 @@ public enum Workflow {
 
         return "Magnet link for \(name)... has been copied to clipboard!"
     }
+    
 }

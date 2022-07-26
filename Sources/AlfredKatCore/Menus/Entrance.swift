@@ -1,13 +1,15 @@
 import AlfredWorkflowScriptFilter
-import AlfredWorkflowUpdater
 import Foundation
 import SwiftSoup
 
+
 class Entrance {
+    
     static let shared = Entrance()
 
     private init() {}
 
+    
     static func userQuery() -> String {
         CommandLine.arguments[1]
     }
@@ -76,6 +78,11 @@ class Entrance {
         return torrents
     }
 
+}
+
+
+extension Entrance {
+    
     private static func buildURL(from query: String) -> String {
         let urlBase = ProcessInfo.processInfo.environment["url"] ?? "https://kickasstorrents.to"
         let encodedQuery = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
@@ -135,4 +142,5 @@ class Entrance {
 
         return ScriptFilter.output()
     }
+
 }
