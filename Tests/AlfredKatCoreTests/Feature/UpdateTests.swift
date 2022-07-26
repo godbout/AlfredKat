@@ -1,37 +1,15 @@
 @testable import AlfredKatCore
 import XCTest
 
+
 class UpdateTests: AlfredKatTestCase {
-    func test_that_Alfred_Kat_can_detect_an_available_self_update() {
-        Self.spoofUserQuery(with: "fight club YIFI")
-        Self.mockLocalWorkflowFolder()
-
+    
+    func test_that_if_there_is_an_updateAvailable_file_in_the_Workflow_cache_folder_then_we_show_the_update_in_Alfred_Results() throws {
+        try? Self.mockAlreadyCreatedReleaseInfoFile()
+        
         XCTAssertTrue(
-            Workflow.menu().contains("update available!")
-        )
+            Workflow.menu().contains("press Enter to update, or Command Enter to take a trip to the release page")
+        )        
     }
-
-    func test_that_Alfred_Kat_can_download_its_own_update() {
-        Self.setEnvironmentVariable(
-            name: "workflow_file_url",
-            value: "https://github.com/godbout/AlfredKat/releases/download/6.0.1/KAT.alfredworkflow"
-        )
-        Self.setEnvironmentVariable(name: "action", value: "update")
-
-        XCTAssertTrue(
-            Workflow.do()
-        )
-    }
-
-    func test_that_Alfred_Kat_can_send_the_user_to_the_update_release_page() {
-        Self.setEnvironmentVariable(
-            name: "release_page_url",
-            value: "https://github.com/godbout/AlfredKat/releases/latest"
-        )
-        Self.setEnvironmentVariable(name: "action", value: "go_release_page")
-
-        XCTAssertTrue(
-            Workflow.do()
-        )
-    }
+    
 }

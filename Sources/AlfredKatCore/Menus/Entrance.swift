@@ -17,25 +17,21 @@ class Entrance {
     }
 
     static func results(for query: String) -> String {
-        if let release = Updater.checkUpdate(for: "godbout/AlfredKat") {
+        if let release = Updater.updateAvailable() {
             ScriptFilter.add(
                 Item(title: "update available! (\(release.version))")
                     .subtitle("press Enter to update, or Command Enter to take a trip to the release page")
                     .arg("do")
-                    .variable(Variable(name: "action", value: "update"))
-                    .variable(Variable(name: "workflow_file_url", value: release.file))
+                    .variable(Variable(name: "AlfredWorkflowUpdater_action", value: "update"))
                     .mod(
                         Cmd()
                             .subtitle("say hello to the release page")
                             .arg("do")
-                            .variables(
-                                Variable(name: "action", value: "go_release_page"),
-                                Variable(name: "release_page_url", value: release.page)
-                            )
+                            .variable(Variable(name: "AlfredWorkflowUpdater_action", value: "open"))
                     )
             )
         }
-
+        
         do {
             let torrents = try searchOnline(for: query)
 
