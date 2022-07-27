@@ -17,6 +17,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 2
+    - name: setup Swift
+      uses: swift-actions/setup-swift@v1
     - name: build
       run: swift build -v
     - name: run tests with code coverage
