@@ -13,7 +13,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/scinfu/SwiftSoup",
-            from: "2.3.2"
+            from: "2.6.0"
         ),
     ],
     targets: [
