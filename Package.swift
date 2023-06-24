@@ -17,7 +17,7 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "AlfredKat",
             dependencies: ["AlfredKatCore"]
         ),
