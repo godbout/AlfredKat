@@ -102,7 +102,7 @@
 	<key>createdby</key>
 	<string>Guillaume Leclerc</string>
 	<key>description</key>
-	<string>Kickass Torrent Download</string>
+	<string>get your KAT torrents right from Alfred—no site no ads</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -169,7 +169,7 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>Crawling through the mess...</string>
+				<string>crawling through the mess...</string>
 				<key>script</key>
 				<string>./resources/binaries/AlfredKat "$1"</string>
 				<key>scriptargtype</key>
@@ -177,7 +177,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Keep tying...</string>
+				<string>keep tying...</string>
 				<key>title</key>
 				<string>I WANT {query}!</string>
 				<key>type</key>
@@ -279,7 +279,7 @@
 				<key>text</key>
 				<string>{query}</string>
 				<key>title</key>
-				<string>Alfred Kat</string>
+				<string>KAT</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
