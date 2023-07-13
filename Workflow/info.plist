@@ -171,9 +171,9 @@
 				<key>runningsubtext</key>
 				<string>Crawling through the mess...</string>
 				<key>script</key>
-				<string>xattr -d com.apple.quarantine AlfredKat &gt;/dev/null 2&gt;&amp;1
+				<string>xattr -d com.apple.quarantine ./resources/binaries/AlfredKat &gt;/dev/null 2&gt;&amp;1
 
-./AlfredKat "$1"</string>
+./resources/binaries/AlfredKat "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -254,7 +254,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./AlfredKat | tr -d '\n'</string>
+				<string>./resources/binaries/AlfredKat | tr -d '\n'</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
