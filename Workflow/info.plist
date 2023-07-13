@@ -298,9 +298,28 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>type KAT followed by what you're looking for, wait a bit, enjoy.
+	<string># WOT IS THAT
 
-see https://github.com/godbout/AlfredKat</string>
+get your KAT torrents without all the advertising crap. 
+
+# HOW DOES IT WORK
+
+you type `kat` followed by what you're looking for:
+
+
+![kat](resources/images/kat.png)
+
+sort by most seeders on top:
+
+![seeders](resources/images/seeders.png)
+
+filter by type:
+
+![music](resources/images/music.png)
+
+# I STILL DONT GET IT COZ IM DUMB
+
+the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 	<key>uidata</key>
 	<dict>
 		<key>1A120CBA-8377-4D3E-919D-CD73EC9445C3</key>
