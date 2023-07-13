@@ -171,9 +171,7 @@
 				<key>runningsubtext</key>
 				<string>Crawling through the mess...</string>
 				<key>script</key>
-				<string>xattr -d com.apple.quarantine ./resources/binaries/AlfredKat &gt;/dev/null 2&gt;&amp;1
-
-./resources/binaries/AlfredKat "$1"</string>
+				<string>./resources/binaries/AlfredKat "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -363,12 +361,29 @@ see https://github.com/godbout/AlfredKat</string>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variables</key>
-	<dict>
-		<key>url</key>
-		<string>https://kickasstorrents.to</string>
-	</dict>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>https://kickasstorrents.to</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Only change this URL if the main site is down. Some mirrors have a different HTML structure or async loading that don't work with the Workflow.</string>
+			<key>label</key>
+			<string>KickassTorrents URL</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>url</string>
+		</dict>
+	</array>
 	<key>version</key>
 	<string>8.0.0</string>
 	<key>webaddress</key>
