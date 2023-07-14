@@ -300,12 +300,11 @@
 	<key>readme</key>
 	<string># WOT IS THAT
 
-get your KAT torrents without all the advertising crap. 
+get your KAT torrents without all the advertising crap. please use this of course responsibly.
 
 # HOW DOES IT WORK
 
 you type `kat` followed by what you're looking for:
-
 
 ![kat](resources/images/kat.png)
 
@@ -315,7 +314,7 @@ sort by most seeders on top:
 
 filter by type:
 
-![music](resources/images/music.png)
+![books](resources/images/books.png)
 
 # I STILL DONT GET IT COZ IM DUMB
 
@@ -394,7 +393,7 @@ the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Only change this URL if the main site is down. Some mirrors have a different HTML structure or async loading that don't work with the Workflow.</string>
+			<string>only change this URL if the main site is down. some mirrors have a different HTML structure or async loading that don't work with the Workflow.</string>
 			<key>label</key>
 			<string>KickassTorrents URL</string>
 			<key>type</key>
@@ -402,9 +401,30 @@ the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 			<key>variable</key>
 			<string>url</string>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>/usr/local/bin/transmission-remote -a {magnet}</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>in case you don't wanna use a GUI application you can specify the path to a command line client. see placeholder above for reference.</string>
+			<key>label</key>
+			<string>Command Line Client</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>cli</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>8.0.0</string>
+	<string>8.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/godbout/AlfredKat</string>
 </dict>
