@@ -19,6 +19,21 @@ class Entrance {
     }
 
     static func results(for query: String) -> String {
+        if let release = Updater.updateAvailable() {
+            ScriptFilter.add(
+                Item(title: "update available! (\(release.version))")
+                    .subtitle("press Enter to update, or Command Enter to take a trip to the release page")
+                    .arg("do")
+                    .variable(Variable(name: "AlfredWorkflowUpdater_action", value: "update"))
+                    .mod(
+                        Cmd()
+                            .subtitle("say hello to the release page")
+                            .arg("do")
+                            .variable(Variable(name: "AlfredWorkflowUpdater_action", value: "open"))
+                    )
+            )
+        }
+        
         do {
             let torrents = try searchOnline(for: query)
 
