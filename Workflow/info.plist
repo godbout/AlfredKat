@@ -8,19 +8,6 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>1A120CBA-8377-4D3E-919D-CD73EC9445C3</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>3781A6A1-D3AB-4D6A-8A79-BC3CD81ED16F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>1F56E35A-3206-4183-89CC-CA9DAAFB98E6</key>
 		<array>
 			<dict>
@@ -60,6 +47,39 @@
 				<false/>
 			</dict>
 		</array>
+		<key>64E04071-6DFC-4263-BE3F-3983684FCBB9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3781A6A1-D3AB-4D6A-8A79-BC3CD81ED16F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>BBF50297-254F-4257-BF2D-136B5BA05734</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A382C84D-7391-400F-ACE5-7210F469D4A2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>828D7CAC-9EBB-49C1-84CF-21CE606030E6</key>
 		<array>
 			<dict>
@@ -76,11 +96,26 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>1A120CBA-8377-4D3E-919D-CD73EC9445C3</string>
+				<string>64E04071-6DFC-4263-BE3F-3983684FCBB9</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A382C84D-7391-400F-ACE5-7210F469D4A2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>30B3E2C7-2FB4-4E97-859B-EE6FE9D6ABBD</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>583B1854-10D8-4D3C-8C9E-88CCE289B935</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -292,42 +327,91 @@
 			<key>type</key>
 			<string>alfred.workflow.utility.hidealfred</string>
 			<key>uid</key>
-			<string>1A120CBA-8377-4D3E-919D-CD73EC9445C3</string>
+			<string>64E04071-6DFC-4263-BE3F-3983684FCBB9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./resources/binaries/AlfredWorkflowUpdater "godbout/AlfredKat" "0"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>BBF50297-254F-4257-BF2D-136B5BA05734</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>downloading update...</string>
+				<key>title</key>
+				<string>KAT</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>30B3E2C7-2FB4-4E97-859B-EE6FE9D6ABBD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:AlfredWorkflowUpdater_action}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>update</string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>583B1854-10D8-4D3C-8C9E-88CCE289B935</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>A382C84D-7391-400F-ACE5-7210F469D4A2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string># WOT IS THAT
-
-get your KAT torrents without all the advertising crap. please use this of course responsibly.
-
-# HOW DOES IT WORK
-
-you type `kat` followed by what you're looking for:
-
-![kat](resources/images/kat.png)
-
-sort by most seeders on top:
-
-![seeders](resources/images/seeders.png)
-
-filter by type:
-
-![books](resources/images/books.png)
-
-# I STILL DONT GET IT COZ IM DUMB
-
-the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
+	<string>beautiful README on [GitHub](https://github.com/godbout/AlfredKat).</string>
 	<key>uidata</key>
 	<dict>
-		<key>1A120CBA-8377-4D3E-919D-CD73EC9445C3</key>
-		<dict>
-			<key>xpos</key>
-			<real>565</real>
-			<key>ypos</key>
-			<real>260</real>
-		</dict>
 		<key>1F56E35A-3206-4183-89CC-CA9DAAFB98E6</key>
 		<dict>
 			<key>xpos</key>
@@ -342,12 +426,26 @@ the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 			<key>ypos</key>
 			<real>150</real>
 		</dict>
+		<key>30B3E2C7-2FB4-4E97-859B-EE6FE9D6ABBD</key>
+		<dict>
+			<key>xpos</key>
+			<real>750</real>
+			<key>ypos</key>
+			<real>555</real>
+		</dict>
 		<key>3781A6A1-D3AB-4D6A-8A79-BC3CD81ED16F</key>
 		<dict>
 			<key>xpos</key>
 			<real>745</real>
 			<key>ypos</key>
 			<real>200</real>
+		</dict>
+		<key>64E04071-6DFC-4263-BE3F-3983684FCBB9</key>
+		<dict>
+			<key>xpos</key>
+			<real>580</real>
+			<key>ypos</key>
+			<real>250</real>
 		</dict>
 		<key>828D7CAC-9EBB-49C1-84CF-21CE606030E6</key>
 		<dict>
@@ -356,12 +454,26 @@ the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 			<key>ypos</key>
 			<real>170</real>
 		</dict>
+		<key>A382C84D-7391-400F-ACE5-7210F469D4A2</key>
+		<dict>
+			<key>xpos</key>
+			<real>640</real>
+			<key>ypos</key>
+			<real>590</real>
+		</dict>
 		<key>A917A3A9-BD31-4C1B-AD78-C4901C16409A</key>
 		<dict>
 			<key>xpos</key>
 			<real>910</real>
 			<key>ypos</key>
 			<real>200</real>
+		</dict>
+		<key>BBF50297-254F-4257-BF2D-136B5BA05734</key>
+		<dict>
+			<key>xpos</key>
+			<real>750</real>
+			<key>ypos</key>
+			<real>430</real>
 		</dict>
 		<key>BF34CCA9-75C4-4386-9934-29FF2E8F3BE4</key>
 		<dict>
@@ -423,8 +535,13 @@ the [GitHub repo](https://github.com/godbout/AlfredKat).</string>
 			<string>cli</string>
 		</dict>
 	</array>
+	<key>variables</key>
+	<dict>
+		<key>alfred_workflow_updater_asset_name</key>
+		<string>KAT.alfredworkflow</string>
+	</dict>
 	<key>version</key>
-	<string>8.1.0</string>
+	<string>9.0.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/godbout/AlfredKat</string>
 </dict>
