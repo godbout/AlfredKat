@@ -99,8 +99,19 @@ extension Entrance {
         if encodedQuery.contains("%5E") {
             let term = encodedQuery.components(separatedBy: "%5E")[0]
             let sortType = encodedQuery.components(separatedBy: "%5E")[1]
-
-            return urlBase + "/search/" + term + "/?sortby=" + sortType + "&sort=desc"
+            
+            switch sortType {
+            case "1":
+                return urlBase + "/search/" + term + "/?sortby=time&sort=desc"
+            case "2":
+                return urlBase + "/search/" + term + "/?sortby=size&sort=desc"
+            case "3":
+                return urlBase + "/search/" + term + "/?sortby=seeders&sort=desc"
+            case "4":
+                return urlBase + "/search/" + term + "/?sortby=leechers&sort=desc"
+            default:
+                return urlBase + "/search/" + term + "/?sortby=" + sortType + "&sort=desc"
+            }
         }
 
         return urlBase + "/search/" + encodedQuery

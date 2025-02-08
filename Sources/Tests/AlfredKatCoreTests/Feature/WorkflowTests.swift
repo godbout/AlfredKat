@@ -33,6 +33,42 @@ class WorkflowTests: AlfredKatTestCase {
             Workflow.menu().contains("dAV1ncia")
         )
     }
+    
+    func test_that_it_can_sort_torrents_by_seeders_through_a_shortcut() {
+        Self.spoofUserQuery(with: "fight club ^3")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Fight Club (1999) 1080p BrRip x264 - YIFY")
+        )
+
+        XCTAssertFalse(
+            Workflow.menu().contains("dAV1ncia")
+        )
+    }
+    
+    func test_that_it_can_sort_torrents_by_date_through_a_shortcut() {
+        Self.spoofUserQuery(with: "fight club ^1")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Fight Club (1999)")
+        )
+    }
+        
+    func test_that_it_can_sort_torrents_by_size_through_a_shortcut() {
+        Self.spoofUserQuery(with: "fight club ^2")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Epic Films 4")
+        )
+    }
+        
+    func test_that_it_can_sort_torrents_by_leechers_through_a_shortcut() {
+        Self.spoofUserQuery(with: "fight club ^4")
+
+        XCTAssertTrue(
+            Workflow.menu().contains("Shaved Fight Club")
+        )
+    }
 
     func test_that_it_tells_the_user_that_there_is_no_item_found_if_well_there_is_no_item_found() {
         Self.spoofUserQuery(with: "lksjdflkasjfdwoivlijssdkfjhsgoiweuh skjhskjhsafdhkjv")
