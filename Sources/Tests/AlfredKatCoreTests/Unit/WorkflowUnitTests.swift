@@ -10,11 +10,9 @@ class WorkflowUnitTests: AlfredKatTestCase {
         )
     }
 
-    func test_thatcalling_a_workflow_action_that_does_not_exists_sends_a_notification_that_huh_you_wrong() {
+    func test_that_calling_a_workflow_action_that_does_not_exists_does_not_send_a_notification() {
         Self.setEnvironmentVariable(name: "action", value: "LOOOOOLLLLLL")
 
-        XCTAssertTrue(
-            Workflow.notify().contains("huh.")
-        )
+        XCTAssertEqual(Workflow.notify(), "")
     }
 }
