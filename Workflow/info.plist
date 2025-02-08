@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>mo.com.sleeplessmind.AlfredKat</string>
-	<key>category</key>
-	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>1F56E35A-3206-4183-89CC-CA9DAAFB98E6</key>
@@ -324,6 +322,11 @@
 			<integer>1</integer>
 		</dict>
 		<dict>
+			<key>config</key>
+			<dict>
+				<key>unstackview</key>
+				<false/>
+			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.hidealfred</string>
 			<key>uid</key>
@@ -540,8 +543,10 @@
 		<key>alfred_workflow_updater_asset_name</key>
 		<string>KAT.alfredworkflow</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>9.0.0</string>
+	<string>9.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/godbout/AlfredKat</string>
 </dict>
