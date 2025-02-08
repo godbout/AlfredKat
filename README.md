@@ -15,9 +15,9 @@ ___
 
 Get your KAT torrents without all the advertising crap. Type "kat" followed by what you're looking for, wait a bit (it's quick), choose your torrent and make some space on your HD.
 
-Now you can also use #tags.
+Now you can also use #tags, like #music or #movies or more.
 
-Now you can also sort ^seeders.
+Now you can also sort by ^date, ^size, ^seeders or ^leechers. if you're too lazy to type there's shortcuts: ^1 ^2 ^3 ^4.
 
 # MANDATORY SCREENSHOT
 
