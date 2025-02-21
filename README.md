@@ -1,6 +1,7 @@
 <h1 align="center">Alfred KAT</h1>
 
 <p align="center">
+    <a href="https://www.alfredapp.com/alfred-5-whats-new/"><img src="https://img.shields.io/badge/Alfred-5-purple"></a>
     <a href="https://apps.apple.com/us/app/macos-catalina/id1466841314?mt=12"><img src="https://img.shields.io/badge/macOS-10.15.7 Catalina%2B-yellowgreen"></a> 
     <a href="https://github.com/godbout/AlfredKat/releases"><img src="https://img.shields.io/github/release/godbout/AlfredKat.svg" alt="GitHub Release"></a>
     <a href="https://github.com/godbout/AlfredKat/actions"><img src="https://img.shields.io/github/actions/workflow/status/godbout/AlfredKat/main.yml?branch=master" alt="Build Status"></a>
